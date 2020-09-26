@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <title>tolist</title>
+       <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <style>
+           p{color: rgb(224, 128, 2);}
+       </style>
+   </head>
+   <body>
+       <div style="background-image: linear-gradient(purple,grey);width: 700px;height: 700px;padding: 20px;margin: -10px;border-radius: 10px;">
+        <h2 style="color: rgb(54, 252, 4);" >SCHEDULE THE TASK FOR THE DAY<br>
+            <span style=" font-size: 30px;content: 'TO-DO-LIST';color: rgb(245, 84, 10);">TO-DO-LIST</span>
+        </h2> 
+          <div ;>
+            <button onclick="insertList()" style="padding: 11px;font-size: 20px;background-color: rgb(247, 192, 11);border-radius: 10px;border:1px solid black;position: absolute;left: 320px;" >Insert</button>
+    
+            <form>
+                <input type="text" id="txt" style="padding: 10px;font-size: 20px;background-color: rgb(243, 233, 238);border-radius: 10px;border:3px solid black;" maxlength="20" placeholder="Enter the text..">
+            </form>
+            <br>
+            <br>
+            <br>
+            <div id="big-container">
+    
+            </div>
+          </div>
+          
+       </div>
+    
+      
+       <script>
+           function insertList()
+           {
+            var txt=document.getElementById("txt");
+                if(txt.value.length==" ")
+                {
+                    alert("you have to enter the text")
+                }
+                else
+                {
+                    execute();
+                }
+           }
+           function execute()
+           {
+                var bigcont=document.getElementById("big-container");
+            var newdiv=document.createElement("div");
+            var textbutton=document.createElement("button");
+            var newdonebutton=document.createElement("button");
+            newdonebutton.style.fontSize="25px";
+            textbutton.style.fontFamily="chewey,cursive";
+            textbutton.style.fontSize="22px";
+            newdonebutton.innerHTML='<i class="fa fa-check"></i>';
+            textbutton.style.width="300px";
+            textbutton.style.height="40px"
+            textbutton.style.backgroundColor="white";
+            textbutton.style.border="1px solid black";
+            textbutton.style.backgroundColor="black";
+            textbutton.style.color="white";
+            textbutton.style.borderTopLeftRadius="6px";
+            textbutton.style.borderBottomLeftRadius="6px";
+            newdonebutton.style.padding="5px";
+            newdonebutton.style.height="39px"
+            newdonebutton.style.border="1px solid black";
+            newdonebutton.style.backgroundColor="black";
+            newdonebutton.style.color="white";
+            newdonebutton.onclick=function()
+            {
+                if(textbutton.style.backgroundColor=="rgb(224, 128, 2)" && textbutton.style.color=='black')
+                {
+                        textbutton.style.backgroundColor="black";
+                        textbutton.style.color="white";
+                        newdonebutton.style.backgroundColor="black"
+                        
+                }
+                else
+                {
+                    textbutton.style.backgroundColor="rgb(224, 128, 2)";
+                    textbutton.style.color="black";
+                    newdonebutton.style.backgroundColor="green"
+                }
+            }
+            var newdeletebutton=document.createElement("button");
+            newdeletebutton.innerHTML='<i class="fa fa-trash"></i>';
+            newdeletebutton.style.fontSize="25px";
+            newdeletebutton.style.height="40px";
+            newdeletebutton.style.padding="6px";
+            newdeletebutton.style.border="1px solid black";
+            newdeletebutton.style.backgroundColor="black";
+            newdeletebutton.style.color="red";
+            newdeletebutton.onclick=function()
+            {
+                newdeletebutton.style.backgroundColor="red";
+               var answer= confirm("are you sure");
+               if(answer)
+               {
+                   this.parentNode.remove();
+               }
+               else{
+
+               }
+            }
+            var inserttext=document.getElementById("txt");
+            textbutton.innerHTML=inserttext.value;
+            newdiv.appendChild(textbutton);
+            newdiv.appendChild(newdonebutton);
+           newdiv.appendChild(newdeletebutton);
+           bigcont.appendChild(newdiv);
+               
+              
+            
+           }
+       </script>
+   </body>
+</html>
